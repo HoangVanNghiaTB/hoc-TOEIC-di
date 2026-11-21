@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TOEIC QUEST — Dark Competitive theme ("Inferno Orange")
+   Các màu Tailwind cũ (slate, indigo, emerald…) được ánh xạ lại sang bảng màu tối,
+   nên mọi màn hình dùng chung một hệ thiết kế mà không phải sửa từng lớp.
+   ============================================================ */
+
+:root {
+  --bg-base: #0b0f17;
+  --bg-sidebar: #101722;
+  --surface-1: #172131;
+  --surface-2: #202d3d;
+  --border: #344255;
+  --accent: #ff6533;
+  --accent-hover: #ff8057;
+  --text-primary: #f8fafc;
+  --text-secondary: #aebbcd;
+  --success: #34d399;
+  --danger: #fb7185;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+  color-scheme: dark;
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+
+  /* Bo góc theo đặc tả: card 12–16px, nút/input 10–12px */
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
+
+  /* Trung tính: slate → bề mặt/chữ cho nền tối */
+  --color-slate-50: #202d3d;
+  --color-slate-100: #263548;
+  --color-slate-200: #344255;
+  --color-slate-300: #4a5a70;
+  --color-slate-400: #8a99ae;
+  --color-slate-500: #aebbcd;
+  --color-slate-600: #c5d0de;
+  --color-slate-700: #dde5ef;
+  --color-slate-800: #eef2f8;
+  --color-slate-900: #f8fafc;
+
+  /* Nhấn chính: indigo → cam */
+  --color-indigo-50: #3a2118;
+  --color-indigo-100: #4a281b;
+  --color-indigo-200: #6b3623;
+  --color-indigo-300: #a04a2a;
+  --color-indigo-400: #ff8057;
+  --color-indigo-500: #ff6533;
+  --color-indigo-600: #e8501f;
+  --color-indigo-700: #ffa687;
+  --color-indigo-800: #ffc2ab;
+  --color-indigo-900: #ffd9cc;
+  --color-fuchsia-500: #d6354e;
+  --color-fuchsia-600: #c2263f;
+
+  /* Trạng thái */
+  --color-emerald-50: #0f2a24;
+  --color-emerald-100: #123b31;
+  --color-emerald-200: #1b5a49;
+  --color-emerald-300: #2f9f7d;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #0f9d6e;
+  --color-emerald-600: #34d399;
+  --color-emerald-700: #6ee7b7;
+  --color-emerald-800: #a7f3d0;
+
+  --color-rose-50: #2e1520;
+  --color-rose-100: #451c2a;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #e5486a;
+  --color-rose-600: #fb7185;
+  --color-rose-700: #fda4af;
+  --color-rose-800: #fecdd3;
+
+  --color-amber-50: #2d2410;
+  --color-amber-100: #3d3014;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #e08a00;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fcd34d;
+  --color-amber-800: #fde68a;
+  --color-amber-900: #fef3c7;
+
+  --color-yellow-100: #3d3314;
+  --color-yellow-200: #5a4a18;
+  --color-yellow-800: #fde68a;
+
+  --color-sky-50: #10283a;
+  --color-sky-100: #123a55;
+  --color-sky-200: #1d5c85;
+  --color-sky-500: #2a86c9;
+  --color-sky-600: #60a5fa;
+  --color-sky-700: #93c5fd;
+
+  --color-teal-50: #0e2b2b;
+  --color-teal-200: #1c5757;
+  --color-teal-500: #0f9e94;
+  --color-teal-600: #2dd4bf;
+  --color-teal-700: #5eead4;
+
+  --color-pink-50: #2e1524;
+  --color-pink-500: #d6407f;
+  --color-pink-600: #f472b6;
+
+  --color-violet-50: #1e1a3a;
+  --color-violet-100: #2a2352;
+  --color-violet-200: #3d3375;
+  --color-violet-500: #7c5ce0;
+  --color-violet-600: #a78bfa;
+  --color-violet-700: #c4b5fd;
+  --color-violet-800: #ddd6fe;
+}
+
+html {
+  background: var(--bg-base);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(255, 101, 51, 0.1), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 100% 44px,
+    var(--bg-base);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Card trắng cũ → bề mặt tối */
+.bg-white {
+  background-color: var(--surface-1);
+}
+.shadow,
+.shadow-sm {
+  --tw-shadow: 0 0 0 1px var(--border);
+}
+.shadow-lg {
+  --tw-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--border);
+}
+
+/* Form: nền tối, chữ sáng */
+input,
+textarea,
+select {
+  color: var(--text-primary);
+}
+input:not([type="checkbox"]):not([type="range"]),
+textarea,
+select {
+  background-color: var(--surface-2);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #7f8ea3;
+}
+input[type="range"] {
+  accent-color: var(--accent);
+}
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Tiện ích giao diện game */
+.card-flip { perspective: 1000px; }
+.pop { animation: pop 0.22s ease-out; }
+@keyframes pop { from { transform: scale(0.94); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
+.shake { animation: shake 0.3s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Focus rõ khi dùng bàn phím */
+:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Thanh cuộn tối */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Giảm chuyển động theo cài đặt hệ thống */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

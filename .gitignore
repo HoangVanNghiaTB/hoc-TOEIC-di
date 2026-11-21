@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.*
+# Audio podcast cá nhân (bản quyền thuộc tác giả gốc, không đưa lên mạng)
+public/podcasts/
+# Tiến trình học cá nhân (tự lưu từ web)
+progress/
+# Ảnh Part 1 do bạn tự thêm (có thể thuộc bản quyền bên thứ ba): chỉ dùng cá nhân, không đưa lên mạng
+public/photos/*
+!public/photos/part1.example.json
+# Bài podcast có lời chép của tác giả podcast: chỉ ở máy bạn
+src/data/podcast-parts.local.ts
+!.env.example

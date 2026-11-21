@@ -1,0 +1,33 @@
+{
+  "_ghi_chu": "Đây là file MẪU, web không đọc file này. Hãy tạo file part1.json cùng thư mục, cùng định dạng, với ảnh thật của bạn.",
+  "items": [
+    {
+      "id": "p1-001",
+      "file": "meeting-01.jpg",
+      "title": "Họp trong văn phòng",
+      "options": [
+        "A man is writing on a whiteboard.",
+        "Some people are sitting around a table.",
+        "A woman is carrying a box up the stairs.",
+        "The room is being painted."
+      ],
+      "answer": 1,
+      "why": "Ảnh chụp một nhóm người ngồi quanh bàn họp. A sai vì không có ai viết lên bảng. C sai vì không có ai bê hộp lên cầu thang. D sai vì không có ai đang sơn phòng.",
+      "vi": "Một nhóm người đang họp quanh bàn."
+    },
+    {
+      "id": "p1-002",
+      "file": "reception-01.png",
+      "title": "Quầy lễ tân",
+      "options": [
+        "A receptionist is answering the phone.",
+        "Customers are waiting outside in the rain.",
+        "A man is typing on a laptop.",
+        "Some chairs are stacked in the corner."
+      ],
+      "answer": 0,
+      "why": "Người ở quầy đang nghe điện thoại. Các câu còn lại mô tả những việc không có trong ảnh.",
+      "vi": ""
+    }
+  ]
+}

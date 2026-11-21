@@ -1,0 +1,20 @@
+# Chạy: docker compose up --build   →   mở http://localhost:5173
+# Đổi cổng: PORT=5180 docker compose up   (hoặc đặt PORT trong file .env)
+services:
+  toeic:
+    build: .
+    ports:
+      # Chỉ mở cho chính máy này; đừng đổi thành 0.0.0.0 nếu không hiểu rõ.
+      - "127.0.0.1:${PORT:-5173}:5173"
+    environment:
+      TOEIC_DOCKER: "1"
+      # Giáo viên AI (tùy chọn): điền trong file .env cạnh file này.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      TUTOR_MODEL: ${TUTOR_MODEL:-claude-haiku-5-5}
+      TUTOR_PIN: ${TUTOR_PIN:-}
+    volumes:
+      # Tiến độ học, bản sao lưu: lưu ngay trong thư mục dự án trên máy bạn.
+      - ./progress:/app/progress
+      # Podcast và ảnh Part 1 của bạn (không nằm trong repo).
+      - ./public/podcasts:/app/public/podcasts
+      - ./public/photos:/app/public/photos

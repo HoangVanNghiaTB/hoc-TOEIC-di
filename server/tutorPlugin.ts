@@ -3,12 +3,12 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Plugin } from 'vite'
 import { loadEnv } from 'vite'
 import { MODES, buildSystem } from './prompts.ts'
+import { isLocalAddress } from './local.ts'
 import type { Mode } from './prompts.ts'
 
 type Msg = { role: 'user' | 'assistant'; content: string }
 
 const MAX_BODY = 40_000
-const LOOPBACK = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1'])
 
 function send(res: ServerResponse, status: number, body: unknown) {
   res.statusCode = status
@@ -90,7 +90,7 @@ export function tutorPlugin(): Plugin {
             if (req.headers['x-tutor'] !== '1') return send(res, 403, { error: 'Thiếu header xác thực.' })
 
             // Từ mạng LAN (ví dụ điện thoại) phải có mã PIN, nếu không thì chỉ máy này được dùng.
-            const local = LOOPBACK.has(req.socket.remoteAddress ?? '')
+            const local = isLocalAddress(req.socket.remoteAddress)
             if (!local) {
               if (!pin) return send(res, 403, { error: 'Giáo viên AI chỉ dùng được trên máy chủ. Đặt TUTOR_PIN trong .env để dùng từ điện thoại.' })
               if (req.headers['x-tutor-pin'] !== pin) return send(res, 401, { error: 'Sai mã PIN.' })

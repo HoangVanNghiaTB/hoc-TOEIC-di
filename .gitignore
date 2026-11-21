@@ -12,3 +12,7 @@ public/photos/*
 # Bài podcast có lời chép của tác giả podcast: chỉ ở máy bạn
 src/data/podcast-parts.local.ts
 !.env.example
+# Tệp nén dữ liệu cá nhân (có thể chứa podcast, ảnh có bản quyền): không đưa lên git
+*.rar
+*.zip
+*.7z

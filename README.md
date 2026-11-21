@@ -26,6 +26,22 @@ Trên Windows có thể dùng `start.bat`.
 
 Giáo viên AI (tùy chọn): sao chép `.env.example` thành `.env` rồi điền `ANTHROPIC_API_KEY`. Khóa chỉ nằm ở máy chủ cục bộ, không bao giờ gửi xuống trình duyệt. Không có khóa thì phần còn lại vẫn chạy bình thường.
 
+## Chạy bằng Docker (không cần cài Node)
+Cần [Docker Desktop](https://www.docker.com/products/docker-desktop/) đang chạy.
+
+```bash
+git clone https://github.com/HoangVanNghiaTB/hoc-TOEIC-di.git
+cd hoc-TOEIC-di
+docker compose up --build     # mở http://localhost:5173
+```
+
+- Đổi cổng: `PORT=5180 docker compose up` (hoặc đặt `PORT=5180` trong file `.env`).
+- Tắt: `Ctrl+C`, hoặc `docker compose down` nếu chạy nền (`docker compose up -d`).
+- Tiến độ học lưu ngay trong thư mục `progress/` của dự án trên máy bạn (được gắn vào container), nên tắt hay xóa container cũng không mất.
+- Podcast và ảnh Part 1 của bạn (nếu có) đặt trong `public/podcasts/` và `public/photos/`, cũng được gắn vào container.
+- Giáo viên AI: tạo file `.env` cạnh `docker-compose.yml` với `ANTHROPIC_API_KEY=...` rồi chạy lại.
+- Cổng chỉ mở cho chính máy bạn (`127.0.0.1`), không mở ra mạng ngoài.
+
 ## Công nghệ
 React 19, TypeScript, Tailwind CSS 4, Vite 8. Trạng thái bằng `useSyncExternalStore`, lưu trong `localStorage` và file JSON.
 

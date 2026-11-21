@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.env
+.env.*
+!.env.example
+# Dữ liệu cá nhân: gắn vào bằng volume, không đóng vào image
+progress
+public/podcasts
+public/photos
+Dockerfile
+docker-compose.yml

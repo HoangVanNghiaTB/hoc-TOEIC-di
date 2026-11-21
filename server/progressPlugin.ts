@@ -2,9 +2,9 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync, copyFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import type { Plugin } from 'vite'
+import { isLocalAddress } from './local.ts'
 
 const MAX_BODY = 8_000_000
-const LOOPBACK = new Set(['127.0.0.1', '::1', '::ffff:127.0.0.1'])
 
 function send(res: ServerResponse, status: number, body: unknown) {
   res.statusCode = status
@@ -81,7 +81,7 @@ export function progressPlugin(): Plugin {
               if (!ok) return send(res, 403, { error: 'forbidden' })
             }
             if (req.headers['x-progress'] !== '1') return send(res, 400, { error: 'bad-request' })
-            if (!LOOPBACK.has(req.socket.remoteAddress ?? '')) return send(res, 403, { error: 'local-only' })
+            if (!isLocalAddress(req.socket.remoteAddress)) return send(res, 403, { error: 'local-only' })
 
             if (req.method === 'GET') {
               const saved = readSaved()
